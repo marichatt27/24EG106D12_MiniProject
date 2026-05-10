@@ -63,60 +63,72 @@ function EditEmployee() {
      }
 
   return (
-    <div>
-      <h1 className="text-5xl text-center text-gray-600">
-        Edit Employee
-      </h1>
-      {/* form */}
-      <form
-        className=" max-w-md mx-auto mt-10"
-        onSubmit={handleSubmit(saveModifiedEmp)}
-      >
-        <input
-          type="text"
-          placeholder="Enter first name "
-          {...register("firstName")}
-          className="mb-3 border p-3 w-full rounded-2xl"
-        />
-        <input
-          type="text"
-          placeholder="Enter last name "
-          {...register("lastName")}
-          className="mb-3 border p-3 w-full rounded-2xl"
-        />
-        <input
-          type="email"
-          placeholder="Enter Email "
-          {...register("email")}
-          className="mb-3 border p-3 w-full rounded-2xl"
-        />
+    <div className="min-h-screen bg-purple-50 flex items-center justify-center p-6">
 
-        <input
-          type="number"
-          placeholder="Enter mobile number"
-          {...register("mobile")}
-          className="mb-3 border  p-3 w-full rounded-2xl"
-        />
-        <input
-          type="text"
-          placeholder="Enter designation"
-          {...register("designation")}
-          className="mb-3 border p-3 w-full rounded-2xl"
-        />
-        <input
-          type="text"
-          placeholder="Enter name of the company"
-          {...register("company")}
-          className="mb-3 border  p-3 w-full rounded-2xl"
-        />
+      <div className="bg-white w-full max-w-lg rounded-2xl shadow-lg p-8 border-t-4 border-purple-600">
 
-        <button
-          type="submit"
-          className="text-2xl rounded-2xl bg-gray-600 text-white block mx-auto p-4"
-        >
-          Save
-        </button>
-      </form>
+        {/* Title */}
+        <h1 className="text-3xl font-bold text-center text-purple-700 mb-6">
+          Edit Employee
+        </h1>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit(saveModifiedEmp)} className="space-y-4">
+
+          <input
+            type="text"
+            placeholder="First Name"
+            {...register("firstName")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          <input
+            type="text"
+            placeholder="Last Name"
+            {...register("lastName")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            placeholder="Mobile Number"
+            {...register("mobile")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          <input
+            type="text"
+            placeholder="Designation"
+            {...register("designation")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          <input
+            type="text"
+            placeholder="Company Name"
+            {...register("company")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          {/* Button */}
+          <button
+            type="submit"
+            className="w-full bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition font-semibold"
+          >
+            Save Changes
+          </button>
+
+        </form>
+      </div>
     </div>
   );
 };

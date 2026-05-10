@@ -57,69 +57,97 @@ let newCounter=useCounterStore((state)=>state.newCounter);
   }
 
   return (
-    <div>
-      <h1 className="text-4xl">Counter:{counter}</h1>
-      <button onClick={changeCounter} className="bg-yellow-50 p-5">
-        Change
-      </button>
-      <h1 className="text-4xl">NewCounter:{newCounter}</h1>
-      <button onClick={incrementCounter} className="bg-yellow-50 p-5">
-        +
-      </button>
+    <div className="min-h-screen bg-purple-50 p-6">
 
-      <div>
-        <h1 className="text-5xl text-center text-gray-600">
+      {/* COUNTERS SECTION */}
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+
+        <div className="bg-white p-5 rounded-2xl shadow-md border-l-4 border-purple-600">
+          <h1 className="text-xl font-semibold text-purple-700">
+            Counter: {counter}
+          </h1>
+          <button
+            onClick={changeCounter}
+            className="mt-3 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"
+          >
+            Change
+          </button>
+        </div>
+
+        <div className="bg-white p-5 rounded-2xl shadow-md border-l-4 border-indigo-500">
+          <h1 className="text-xl font-semibold text-indigo-600">
+            New Counter: {newCounter}
+          </h1>
+          <button
+            onClick={incrementCounter}
+            className="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+          >
+            +
+          </button>
+        </div>
+
+      </div>
+
+      {/* FORM CARD */}
+      <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border-t-4 border-purple-600">
+
+        <h1 className="text-3xl font-bold text-center text-purple-700 mb-6">
           Create New Employee
         </h1>
-        {/* form */}
-        <form
-          className=" max-w-md mx-auto mt-10"
-          onSubmit={handleSubmit(onFormSubmit)}
-        >
+
+        <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
+
           <input
             type="text"
-            placeholder="Enter first name "
+            placeholder="First Name"
             {...register("firstName")}
-            className="mb-3 border p-3 w-full rounded-2xl"
-          />
-          <input
-            type="text"
-            placeholder="Enter last name "
-            {...register("lastName")}
-            className="mb-3 border p-3 w-full rounded-2xl"
-          />
-          <input
-            type="email"
-            placeholder="Enter Email "
-            {...register("email")}
-            className="mb-3 border p-3 w-full rounded-2xl"
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
           />
 
           <input
-            type="number"
-            placeholder="Enter mobile number"
+            type="text"
+            placeholder="Last Name"
+            {...register("lastName")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
+          />
+
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            placeholder="Mobile Number"
             {...register("mobile")}
-            className="mb-3 border  p-3 w-full rounded-2xl"
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
           />
+
           <input
             type="text"
-            placeholder="Enter designation"
+            placeholder="Designation"
             {...register("designation")}
-            className="mb-3 border p-3 w-full rounded-2xl"
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
           />
+
           <input
             type="text"
-            placeholder="Enter name of the company"
+            placeholder="Company Name"
             {...register("company")}
-            className="mb-3 border  p-3 w-full rounded-2xl"
+            className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400"
           />
 
           <button
             type="submit"
-            className="text-2xl rounded-2xl bg-gray-600 text-white block mx-auto p-4"
+            className="w-full bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition"
           >
-            Add Emp
+            Add Employee
           </button>
+
         </form>
       </div>
     </div>

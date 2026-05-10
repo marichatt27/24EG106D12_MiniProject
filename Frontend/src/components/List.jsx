@@ -38,33 +38,57 @@ useEffect(()=>{
 
 
   return (
-    <div>
-      <h1 className="text-4xl text-center">List of Employees</h1>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+    <div className="min-h-screen bg-purple-50 p-6">
+
+      {/* Title */}
+      <h1 className="text-4xl font-bold text-center text-purple-700 mb-10">
+        Employees List
+      </h1>
+
+      {/* Grid */}
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
         {emps.map((empObj) => (
-          <div key={empObj._id} className=" bg-white p-5">
-            <p>{empObj.email}</p>
-            <p>{empObj.firstName}</p>
-            {/*3 buttons*/}
-            <div className="flex justify-around">
+          <div
+            key={empObj._id}
+            className="bg-white rounded-2xl shadow-md p-5 border-t-4 border-purple-500 hover:shadow-xl hover:-translate-y-1 transition"
+          >
+
+            {/* Info */}
+            <p className="text-purple-700 font-semibold text-lg">
+              {empObj.firstName}
+            </p>
+
+            <p className="text-gray-600 text-sm">{empObj.email}</p>
+
+            {/* Buttons */}
+            <div className="flex justify-between mt-5 gap-2">
+
               <button
-                className="bg-green-600 p-2 rounded-2xl text-white"
+                className="flex-1 bg-green-500 hover:bg-green-600 text-white py-1 rounded-lg text-sm transition"
                 onClick={() => goToEmployee(empObj)}
               >
-                Veiw
+                View
               </button>
+
               <button
-                className="bg-blue-600 p-2 rounded-2xl text-white"
+                className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-1 rounded-lg text-sm transition"
                 onClick={() => goToEditEmployee(empObj)}
               >
                 Edit
               </button>
-              <button className="bg-red-600 p-2 rounded-2xl text-white" onClick={() => deleteEmpById(empObj._id)}>
+
+              <button
+                className="flex-1 bg-red-500 hover:bg-red-600 text-white py-1 rounded-lg text-sm transition"
+                onClick={() => deleteEmpById(empObj._id)}
+              >
                 Delete
               </button>
+
             </div>
           </div>
         ))}
+
       </div>
     </div>
   );
