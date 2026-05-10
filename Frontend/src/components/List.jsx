@@ -16,7 +16,7 @@ function List() {
    };
    const deleteEmpById = async (id) => {
      let res = await axios.delete(
-       `https://atp-2.onrender.com/employee-api/employee/${id}`,
+       `https://two4eg106d12-miniproject.onrender.com/employee-api/employee/${id}`,
      );
      if (res.status === 200)
        //get latest emp data
@@ -25,7 +25,7 @@ function List() {
 
   //get all emps
     async function getEmps() {
-      let res = await fetch("https://atp-2.onrender.com/employee-api/employees");
+      let res = await fetch("https://two4eg106d12-miniproject.onrender.com/employee-api/employees");
       if (res.status === 200) {
         let resObj = await res.json();
         setEmps(resObj.payload);
