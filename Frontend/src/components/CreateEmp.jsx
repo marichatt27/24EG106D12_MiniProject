@@ -17,7 +17,7 @@ function CreateEmp() {
   } = useForm();
 let newCounter=useCounterStore((state)=>state.newCounter);
   let incrementCounter=useCounterStore((state)=>state.incrementCounter)
-  console.log("home")
+  console.log("Home")
   const {counter,changeCounter}=useContext(counterContextObj)
   //form submit
   const onFormSubmit = async (newEmpObj) => {
