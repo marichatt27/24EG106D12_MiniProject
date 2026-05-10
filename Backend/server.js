@@ -13,15 +13,8 @@ const app = exp();
 app.use(exp.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://atp-2opl.vercel.app",
-    ],
-    credentials: true,
-  })
-);
+// CORS FIX
+app.use(cors());
 
 // Home Route
 app.get("/", (req, res) => {
