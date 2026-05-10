@@ -9,44 +9,54 @@ config();
 
 const app = exp();
 
+// Middleware
+app.use(exp.json());
+app.use(cookieParser());
+
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
       "https://atp-2opl.vercel.app",
     ],
+    credentials: true,
   })
 );
 
-app.use(exp.json());
-app.use(cookieParser());
+// Home Route
+app.get("/", (req, res) => {
+  res.send("Backend Running Successfully");
+});
 
-const PORT = process.env.PORT || 3000;
-
+// API Routes
 app.use("/employee-api", employee);
 
+// Port
+const PORT = process.env.PORT || 3000;
+
+// Connect Database and Start Server
 async function connectDB() {
   try {
     await mongoose.connect(process.env.DB_url);
 
-    console.log("mongodb connected");
+    console.log("MongoDB connected");
 
-    app.listen(PORT, () =>
-      console.log(`server running on ${PORT}`)
-    );
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   } catch (err) {
-    console.log(err);
+    console.log("Database connection error:", err.message);
   }
 }
 
 connectDB();
 
-// error handling middleware
+// Error Handling Middleware
 app.use((err, req, res, next) => {
-  console.log("err in middleware:", err.message);
+  console.log("Error:", err.message);
 
   res.status(err.status || 500).json({
-    message: "error",
-    reason: err.message,
+    success: false,
+    message: err.message || "Internal Server Error",
   });
 });
