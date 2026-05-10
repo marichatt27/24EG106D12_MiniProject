@@ -33,7 +33,7 @@ function EditEmployee() {
       try {
         //console.log(modifiedEmp);
         const res = await axios.put(
-          `https://atp-2.onrender.com/employee/${state._id}`,modifiedEmp,
+          `https://two4eg106d12-miniproject.onrender.com/employee/${state._id}`,modifiedEmp,
         );
         if (res.status === 200) {
           //navigate to list of emp
